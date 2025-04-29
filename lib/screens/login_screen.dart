@@ -2,6 +2,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:uop_todo_day5/screens/dashboard_screen.dart';
+import 'package:uop_todo_day5/screens/email_verification_screen.dart';
 import 'package:uop_todo_day5/screens/forgot_password_screen.dart';
 import 'package:uop_todo_day5/screens/sign_up_screen.dart';
 
@@ -70,6 +72,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   if( userCredentials.user != null ){
                     Fluttertoast.showToast( msg: 'success');
                     // first check if email is verified
+
+                    if( !userCredentials.user!.emailVerified){
+
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                        return EmailVerificationScreen();
+                      }));
+                    }else{
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                        return DashboardScreen();
+                      }));
+                    }
+
                     // Navigate to Dashboard
                   }
                 } on FirebaseAuthException catch(e){
