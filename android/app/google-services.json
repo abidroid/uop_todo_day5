@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "118501064254",
+    "project_id": "todo-uop-rwk",
+    "storage_bucket": "todo-uop-rwk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118501064254:android:5f679138cd7568accbdb6f",
+        "android_client_info": {
+          "package_name": "com.uop_rwk.uop_todo_day5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw_v2ZFefQGT7RoGD0b9Wq4N02HA2ZhO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
