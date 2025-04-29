@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -99,6 +100,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     UserCredential userCredentials = await auth.createUserWithEmailAndPassword(email: email, password: password);
 
                     if( userCredentials.user != null ){
+
+                      // save user info in Database
+
+                      FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+
+                      await firestore.collection('users')
+                          .doc(userCredentials.user!.uid)
+                          .set({
+
+                        'fullName': fullName,
+                        'mobile': mobileNum,
+                        'email': email,
+                        'uid': userCredentials.user!.uid,
+                        'photo': null,
+                        'createdOn': DateTime.now().millisecondsSinceEpoch,
+                      });
 
                         Fluttertoast.showToast(msg: 'Success');
                         Navigator.of(context).pop();
